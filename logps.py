@@ -7,7 +7,7 @@ import subprocess
 
 
 def process_list():
-    command = subprocess.Popen(["ps", "-ax"], stdout=subprocess.PIPE)
+    command = subprocess.Popen(["ps", "ax"], stdout=subprocess.PIPE)
     if command.wait() != 0:
         raise Exception("command ps didn't work!")
     return command.stdout
