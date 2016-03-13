@@ -4,6 +4,7 @@ import sys
 import re
 import time
 import subprocess
+from datetime import datetime
 
 
 def process_list():
@@ -26,7 +27,13 @@ class Logger(object):
         pid = find_pid(row)
         if pid not in self.know_pids:
             self.know_pids.append(pid)
-            print row.strip()
+            print self._format_row(row)
+
+    def _format_row(self, row):
+        return "%s %s" % (self._now(), row.strip())
+
+    def _now(self):
+        return datetime.now().isoformat()
 
 
 def main():
